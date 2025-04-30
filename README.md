@@ -1,5 +1,3 @@
----
-
 ## IMU Earable: Real-Time Head Gesture Recognition using Earbuds
 
 This repository presents a full machine learning pipeline for **real-time head gesture recognition** using **Inertial Measurement Unit (IMU)** data from wireless earbuds. By combining **signal processing**, **feature engineering**, and **advanced classification models**, we accurately classify facial and head gestures performed by 29 individuals.
