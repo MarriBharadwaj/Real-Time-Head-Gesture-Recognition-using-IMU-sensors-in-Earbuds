@@ -12,7 +12,7 @@ Mentors: Dr. Suchetana Chakraborty, Mr. Garvit Chugh*
 - **Activity Classification**: Classify head/facial gestures using IMU sensor data from earbuds.
 - **Feature Engineering**: Extract over 160 time- and frequency-domain features to capture motion characteristics.
 - **Model Comparison**: Evaluate multiple classifiers (LightGBM, XGBoost, ExtraTrees, Random Forest, and Voting Ensemble).
-- ⚙**Real-time Compatibility**: Maintain lightweight, efficient computation suitable for wearable devices.
+- **Real-time Compatibility**: Maintain lightweight, efficient computation suitable for wearable devices.
 
 ---
 
