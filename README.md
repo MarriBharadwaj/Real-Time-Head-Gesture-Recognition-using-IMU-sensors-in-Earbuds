@@ -24,7 +24,6 @@ Mentors: Dr. Suchetana Chakraborty, Mr. Garvit Chugh*
 | `IMU_Earable_Window2_Step1.ipynb` | Experiment with finer granularity (window = 2s, step = 1s) |
 | `IMU_Earable_Window5_Step3.ipynb` | Experiment with wider context (window = 5s, step = 3s) |
 | `IMU_Earable_Presentation.pptx` | Project presentation summarizing methodology, results, and key insights |
-| `EARBUDS/` | Folder containing IMU CSV files for all 29 participants (raw dataset) |
 
 ---
 
@@ -58,6 +57,11 @@ Tested 3 segmentation strategies:
 - **Window=2s, Step=1s** → More granular, but lower performance
 - **Window=4s, Step=2s** *Best balance between detail and stability*
 - **Window=5s, Step=3s** → Wider context but slight drop in accuracy
+
+---
+### Dataset
+
+This project uses the [EarSet multimodal dataset](https://zenodo.org/records/8142332), which contains labeled IMU recordings of head gestures by 29 participants using Nokia Bell Labs wireless earbuds.
 
 ---
 
