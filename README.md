@@ -49,10 +49,6 @@ A total of **162 features** were extracted from each IMU windowed segment, inclu
 | ExtraTrees | 91.49% | 0.92 | Consistent and robust |
 | Random Forest | 89.88% | 0.90 | Lower but stable |
 
-3-Fold CV Mean Accuracy: **91.97%**  
-Std. Deviation across folds: **0.0003**  
-➡*Very high reliability and generalizability*
-
 ---
 
 ### Hyperparameter Tuning
