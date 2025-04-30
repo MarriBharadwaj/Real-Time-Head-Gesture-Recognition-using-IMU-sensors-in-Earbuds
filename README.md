@@ -1,41 +1,80 @@
 ---
 
-## Real-Time Head Gesture Recognition using IMU Sensors in Earbuds
+## IMU Earable: Real-Time Head Gesture Recognition using Earbuds
 
-This repository contains feature engineering and signal processing pipelines for extracting meaningful features from IMU data collected via wearable earables. The primary goal is to enable accurate classification and analysis of head movements using filtered sensor data (accelerometer and gyroscope).
+This repository presents a full machine learning pipeline for **real-time head gesture recognition** using **Inertial Measurement Unit (IMU)** data from wireless earbuds. By combining **signal processing**, **feature engineering**, and **advanced classification models**, we accurately classify facial and head gestures performed by 29 individuals.
 
----
-
-### Main Notebook
-
-- `IMU_Earable_Main.ipynb`  
-  → This notebook implements the complete pipeline using the optimal hyperparameters:  
-  **Window Size = 4**, **Step Size = 2**
+> *Project by Marri Bharadwaj (B21CS045)  
+Mentors: Dr. Suchetana Chakraborty, Mr. Garvit Chugh*
 
 ---
 
-### Hyperparameter Tuning Experiments
+### Objectives
 
-- `IMU_Earable_Window2_Step1.ipynb`  
-  → Experiment with smaller window and step size  
-- `IMU_Earable_Window5_Step3.ipynb`  
-  → Experiment with larger window and step size  
-
-These experiments were run in parallel to evaluate the impact of different temporal resolutions on model performance.
+- **Activity Classification**: Classify head/facial gestures using IMU sensor data from earbuds.
+- **Feature Engineering**: Extract over 160 time- and frequency-domain features to capture motion characteristics.
+- **Model Comparison**: Evaluate multiple classifiers (LightGBM, XGBoost, ExtraTrees, Random Forest, and Voting Ensemble).
+- ⚙**Real-time Compatibility**: Maintain lightweight, efficient computation suitable for wearable devices.
 
 ---
 
-### Presentation
+### Repository Contents
 
-- `IMU_Earable_Presentation.pptx`
-  → Slide deck used during the project presentation summarizing the methodology, feature engineering, and classification results.
-
----
-
-### ✅ Results
-
-The optimal configuration (Window = 4, Step = 2) achieved the best balance between temporal sensitivity and signal stability, leading to improved performance in downstream classification.
+| File | Description |
+|------|-------------|
+| `IMU_Earable_Main.ipynb` | Final notebook with best model (window size = 4s, step = 2s) |
+| `IMU_Earable_Window2_Step1.ipynb` | Experiment with finer granularity (window = 2s, step = 1s) |
+| `IMU_Earable_Window5_Step3.ipynb` | Experiment with wider context (window = 5s, step = 3s) |
+| `IMU_Earable_Presentation.pptx` | Project presentation summarizing methodology, results, and key insights |
 
 ---
 
-Let me know if you want a badge-style header or visuals added too — happy to help with that!
+### Feature Engineering
+
+A total of **162 features** were extracted from each IMU windowed segment, including:
+
+- **Time-Domain**: Mean, Std, Min/Max, Range, Skew, Kurtosis, Energy, Peaks, Troughs, Zero-crossings
+- **Frequency-Domain**: FFT energy, dominant frequency (FFT peak), spectral entropy
+- **Motion Dynamics**: Jerk statistics (mean, max, std)
+- **Magnitude-Based**: Combined `acc_mag` and `gyro_mag` features
+- **Cross-Correlation**: Between axes (e.g., `ax` & `ay`, `gy` & `gz`)
+
+---
+
+### Results
+
+| Model | Accuracy | Macro F1 | Notes |
+|-------|----------|----------|-------|
+| **Voting Classifier** | **92.90%** | 0.93 | Best overall performance |
+| LightGBM | 92.08% | 0.92 | Strong baseline |
+| XGBoost | 91.30% | 0.91 | Competitive |
+| ExtraTrees | 91.49% | 0.92 | Consistent and robust |
+| Random Forest | 89.88% | 0.90 | Lower but stable |
+
+3-Fold CV Mean Accuracy: **91.97%**  
+Std. Deviation across folds: **0.0003**  
+➡*Very high reliability and generalizability*
+
+---
+
+### Hyperparameter Tuning
+
+Tested 3 segmentation strategies:
+- **Window=2s, Step=1s** → More granular, but lower performance
+- **Window=4s, Step=2s** *Best balance between detail and stability*
+- **Window=5s, Step=3s** → Wider context but slight drop in accuracy
+
+---
+
+### References
+
+- Ferlini et al., *EarSet: A Multi-Modal In-Ear Dataset*, Zenodo, 2023  
+- IMUPoser (CHI 2023): Full-body pose estimation using IMUs in earbuds and wearables
+
+---
+
+### Acknowledgments
+
+Special thanks to my mentors and the UbiSys Lab for guidance and feedback throughout this project.
+
+---
